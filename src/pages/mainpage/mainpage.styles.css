@@ -26,3 +26,10 @@
 	color: #1a5ba9;
 	cursor: pointer;
 }
+.main_weather {
+	display: flex;
+	height: 400px;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: baseline;
+}
