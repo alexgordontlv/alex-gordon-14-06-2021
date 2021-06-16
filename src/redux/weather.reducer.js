@@ -1,9 +1,10 @@
 import { WEATHER_TYPES } from './weather.types';
 const INITIAL_STATE = {
-	autoCompleteLocations: [],
-	weather: [],
+	error: {
+		open: false,
+		message: '',
+	},
 	favorites: [],
-	isFavorite: false,
 	theme: 'light',
 };
 
@@ -12,8 +13,9 @@ const weatherReducer = (state = INITIAL_STATE, action) => {
 		case WEATHER_TYPES.SET_THEME:
 			return { ...state, theme: action.payload };
 		case WEATHER_TYPES.TOGGLE_FAVORITE:
+			let flag = state.favorites.some((city) => city.cityKey === action.payload.cityKey);
 			let newFavorites;
-			if (state.isFavorite) {
+			if (flag) {
 				newFavorites = state.favorites.filter((city) => city.cityName !== action.payload.cityName);
 				return {
 					...state,
@@ -24,7 +26,12 @@ const weatherReducer = (state = INITIAL_STATE, action) => {
 				newFavorites = [...state.favorites, action.payload];
 				return { ...state, isFavorite: true, favorites: newFavorites };
 			}
-
+		case WEATHER_TYPES.TOGGLE_MODAL:
+			console.log(action);
+			return { ...state, error: { ...state.error, open: true, message: action.payload } };
+		case WEATHER_TYPES.HIDE_MODAL:
+			console.log(action);
+			return INITIAL_STATE;
 		default:
 			return state;
 	}

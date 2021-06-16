@@ -2,9 +2,11 @@ body {
 	margin: 0;
 	font-family: 'Roboto', sans-serif;
 }
+
 .app {
-	width: 100%;
+	width: 100vw;
 	height: 100vh;
+	position: absolute;
 }
 .app_light {
 	background: linear-gradient(to bottom, #3987c9 0%, #e1e5ed 100%);
@@ -17,3 +19,7 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+/* @media only screen and (max-width: 600px) {
+	.app {
+	}
+} */

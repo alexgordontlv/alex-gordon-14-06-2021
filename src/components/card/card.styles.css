@@ -8,3 +8,14 @@
 	width: 700px;
 	height: 500px;
 }
+
+@media only screen and (max-width: 600px) {
+	.card {
+		width: 400px;
+		height: 700px;
+		max-height: 700px;
+		overflow-y: scroll;
+
+		flex-direction: column;
+	}
+}

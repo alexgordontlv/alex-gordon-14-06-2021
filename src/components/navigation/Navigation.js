@@ -12,10 +12,10 @@ const Navigation = () => {
 	return (
 		<div className={`navigation navigation_${currentTheme}`}>
 			<Link to='/'>
-				<h2 className={`h2_${currentTheme}`}>Home</h2>
+				<h2 className={`nav_option nav_option_${currentTheme}`}>Home</h2>
 			</Link>
 			<Link to='/favorites'>
-				<h2 className={`h2_${currentTheme}`}>Favorites</h2>
+				<h2 className={`nav_option nav_option_${currentTheme}`}>Favorites</h2>
 			</Link>
 			<ToggleButton
 				value='check'

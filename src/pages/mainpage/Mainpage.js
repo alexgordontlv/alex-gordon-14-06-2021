@@ -1,88 +1,65 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Card from '../../components/card/Card';
 import WeatherCard from '../../components/weathercard/WeatherCard';
-import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from '@reach/combobox';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import CustomInput from '../../components/custominput/CustomInput';
 import { IconButton } from '@material-ui/core';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
-import { toggleFavorite } from '../../redux/weather.actions';
+import fetchUrls from '../../utilities/fetchfunction';
+import { toggleFavorite, toggleModal } from '../../redux/weather.actions';
+import { useHistory } from 'react-router-dom';
 import './mainpage.styles.css';
 
-const API = 'rYBVyyZFhtZkPwiQI6eQWaIYipiGFVma';
 const Mainpage = () => {
-	const [input, setInput] = useState('');
+	const [currentCity, setCurrentCity] = useState({
+		cityName: 'Tel Aviv',
+		cityKey: '215854',
+	});
+	const [isFavorite, setFevorite] = useState(false);
 	const [cityWeather, setCityWeather] = useState('');
-	const [cityName, setCityName] = useState('');
-	const dispatch = useDispatch();
-	const isFavorite = useSelector((state) => state.isFavorite);
-
 	const [fiveDayForecast, setFiveDayForecast] = useState([]);
-	const [suggestions, setSuggestions] = useState([]);
 
-	const getAutoComplete = async (location) => {
-		const { data } = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API}&q=${location}`);
-		setSuggestions(data);
-	};
+	const history = useHistory();
+	const dispatch = useDispatch();
+	const favorites = useSelector((state) => state.favorites);
 
-	const getWeatherCondition = async (cityKey) => {
-		const { data } = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${API}`);
-		setCityWeather(data);
-	};
-	const getWeatherForecast = async (cityKey) => {
-		const { data } = await axios.get(`http://dataservice.accuweather.com//forecasts/v1/daily/5day/${cityKey}?metric=true&apikey=${API}`);
-		setFiveDayForecast(data.DailyForecasts);
-	};
+	const fetchAndSet = useCallback(async () => {
+		const [res1, res2] = await Promise.all([fetchUrls('weatherForecast', currentCity.cityKey), fetchUrls('weatherCondition', currentCity.cityKey)]);
+		if (!res1.error && !res2.error) {
+			setFiveDayForecast(res1.data.DailyForecasts);
+			setCityWeather(res2.data[0]);
+		} else {
+			dispatch(toggleModal('Error fetching data...'));
+		}
+	}, [currentCity, dispatch]);
 
 	useEffect(() => {
-		const timeOut = setTimeout(() => {
-			getAutoComplete(input);
-		}, 1000);
-		return () => clearTimeout(timeOut);
-	}, [input]);
-	console.log(isFavorite);
+		const cityProp = history.location.state;
+		cityProp && setCurrentCity(cityProp);
+		fetchAndSet();
+		history.replace();
+	}, [currentCity, history, fetchAndSet]);
+
+	useEffect(() => {
+		setFevorite(favorites.some((city) => city.cityKey === currentCity.cityKey));
+	}, [favorites, currentCity]);
+
 	return (
 		<div>
 			<div className='search'>
-				<Combobox onSelect={(city) => setCityName(city)}>
-					<ComboboxInput
-						value={input}
-						onChange={(e) => {
-							setInput(e.target.value);
-						}}
-						placeholder='Search your city weather!'
-					/>
-					<ComboboxPopover>
-						<ComboboxList className='option'>
-							{suggestions &&
-								suggestions.slice(0, 5).map((city, idx) => (
-									<ComboboxOption
-										key={idx}
-										value={city.LocalizedName}
-										className='search_option'
-										onClick={() => {
-											getWeatherCondition(city.Key);
-											getWeatherForecast(city.Key);
-											setInput('');
-											setSuggestions([]);
-										}}
-									/>
-								))}
-						</ComboboxList>
-					</ComboboxPopover>
-				</Combobox>
+				<CustomInput {...{ setCurrentCity }} />
 			</div>
-			<Card weatherIcon={cityWeather && cityWeather[0].WeatherIcon}>
+			<Card weatherIcon={cityWeather && cityWeather.WeatherIcon}>
 				{cityWeather && (
 					<div className='main_weather'>
 						<IconButton
 							onClick={() => {
-								dispatch(toggleFavorite({ ...cityWeather[0], cityName }));
+								dispatch(toggleFavorite({ ...cityWeather, ...currentCity }));
 							}}>
 							{isFavorite ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderIcon />}
 						</IconButton>
-						<WeatherCard cityName={cityName} cityWeather={cityWeather[0]} width='700' iconWidth='200' />
+						<WeatherCard currentCity={currentCity} cityWeather={cityWeather} width='700' iconWidth='200' />
 						{fiveDayForecast &&
 							fiveDayForecast.map((forecast, idx) => <WeatherCard key={idx} forecast={forecast} width='120' iconWidth='100' />)}
 					</div>

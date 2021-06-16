@@ -1,35 +1,17 @@
-.search {
-	position: absolute;
-	top: 90px;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 350px;
-	max-width: 400px;
-}
-
-.search input {
-	padding: 0.5rem;
-	font-size: 1rem;
-	width: 100%;
-}
-.option {
-	margin: 0;
-	background-color: white;
-}
-
-.search_option {
-	padding: 7px;
-
-	color: black;
-}
-.option :hover {
-	color: #1a5ba9;
-	cursor: pointer;
-}
 .main_weather {
 	display: flex;
 	height: 400px;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 	align-items: baseline;
+}
+
+@media only screen and (max-width: 600px) {
+	.main_weather {
+		margin-top: 10vh;
+		height: 700px;
+		justify-content: center;
+
+		align-items: center;
+	}
 }

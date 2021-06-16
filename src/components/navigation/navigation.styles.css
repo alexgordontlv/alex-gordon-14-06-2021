@@ -3,18 +3,18 @@
 	justify-content: flex-end;
 	width: 100%;
 }
-h2 {
+.nav_option {
 	text-decoration: none;
 	color: black;
 	display: inline-block;
 	margin: 10px;
 }
 
-.h2_dark {
+.nav_option_dark {
 	color: #82ca9d;
 }
 
-h2:hover {
+.nav_option:hover {
 	cursor: pointer;
 	text-decoration: underline;
 }

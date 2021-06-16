@@ -13,3 +13,16 @@ export const toggleFavorite = (favorite) => {
 		payload: favorite,
 	};
 };
+
+export const toggleModal = (message) => {
+	return {
+		type: WEATHER_TYPES.TOGGLE_MODAL,
+		payload: message,
+	};
+};
+
+export const hideModal = () => {
+	return {
+		type: WEATHER_TYPES.HIDE_MODAL,
+	};
+};
