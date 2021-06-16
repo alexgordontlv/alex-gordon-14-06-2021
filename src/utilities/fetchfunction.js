@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = 'b1rtH1c7YGAGM5oe3z8xmeRuenABGxtA';
+const API = process.env.REACT_APP_WEATHER_API;
 const fetchUrls = async (queryKey, cityKey) => {
 	let error;
 	let data;
