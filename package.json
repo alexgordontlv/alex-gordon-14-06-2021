@@ -1,4 +1,5 @@
 {
+  "homepage": "https://alexgordontlv.github.io/alex-gordon-14-06-2021/",
   "name": "brandefender",
   "version": "0.1.0",
   "private": true,
@@ -11,6 +12,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "gh-pages": "^3.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-query": "^3.17.0",
@@ -24,7 +26,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "predeploy": "npm run build",
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
