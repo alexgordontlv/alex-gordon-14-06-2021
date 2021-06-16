@@ -27,10 +27,8 @@ const weatherReducer = (state = INITIAL_STATE, action) => {
 				return { ...state, isFavorite: true, favorites: newFavorites };
 			}
 		case WEATHER_TYPES.TOGGLE_MODAL:
-			console.log(action);
 			return { ...state, error: { ...state.error, open: true, message: action.payload } };
 		case WEATHER_TYPES.HIDE_MODAL:
-			console.log(action);
 			return INITIAL_STATE;
 		default:
 			return state;
