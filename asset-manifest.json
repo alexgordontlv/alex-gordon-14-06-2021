@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.e507de0b.chunk.css",
-    "main.js": "/static/js/main.9281963b.chunk.js",
-    "main.js.map": "/static/js/main.9281963b.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.1e348d10.js",
-    "runtime-main.js.map": "/static/js/runtime-main.1e348d10.js.map",
-    "static/js/2.c2918e37.chunk.js": "/static/js/2.c2918e37.chunk.js",
-    "static/js/2.c2918e37.chunk.js.map": "/static/js/2.c2918e37.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.e507de0b.chunk.css.map": "/static/css/main.e507de0b.chunk.css.map",
-    "static/js/2.c2918e37.chunk.js.LICENSE.txt": "/static/js/2.c2918e37.chunk.js.LICENSE.txt"
+    "main.css": "/alex-gordon-14-06-2021/static/css/main.e507de0b.chunk.css",
+    "main.js": "/alex-gordon-14-06-2021/static/js/main.9281963b.chunk.js",
+    "main.js.map": "/alex-gordon-14-06-2021/static/js/main.9281963b.chunk.js.map",
+    "runtime-main.js": "/alex-gordon-14-06-2021/static/js/runtime-main.b7b37a38.js",
+    "runtime-main.js.map": "/alex-gordon-14-06-2021/static/js/runtime-main.b7b37a38.js.map",
+    "static/js/2.c2918e37.chunk.js": "/alex-gordon-14-06-2021/static/js/2.c2918e37.chunk.js",
+    "static/js/2.c2918e37.chunk.js.map": "/alex-gordon-14-06-2021/static/js/2.c2918e37.chunk.js.map",
+    "index.html": "/alex-gordon-14-06-2021/index.html",
+    "static/css/main.e507de0b.chunk.css.map": "/alex-gordon-14-06-2021/static/css/main.e507de0b.chunk.css.map",
+    "static/js/2.c2918e37.chunk.js.LICENSE.txt": "/alex-gordon-14-06-2021/static/js/2.c2918e37.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.1e348d10.js",
+    "static/js/runtime-main.b7b37a38.js",
     "static/js/2.c2918e37.chunk.js",
     "static/css/main.e507de0b.chunk.css",
     "static/js/main.9281963b.chunk.js"
