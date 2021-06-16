@@ -1,5 +1,5 @@
 {
-  "homepage": "https://alexgordontlv.github.io/alex-gordon-14-06-2021/",
+  "homepage": "https://alexgordontlv.github.io/alex-gordon-14-06-2021",
   "name": "brandefender",
   "version": "0.1.0",
   "private": true,
@@ -27,8 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "predeploy": "npm run build",
-    "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build"
+      "deploy": "gh-pages -b master -d build",   
+      "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
