@@ -10,13 +10,14 @@ const fetchUrls = async (queryKey, cityKey) => {
 		weatherForecast: `https://dataservice.accuweather.com//forecasts/v1/daily/5day/${cityKey}?metric=true&apikey=${API}`,
 	};
 	try {
-		const res = await axios.get(urls[queryKey],{
+		const res = await axios.get(urls[queryKey], {
 			method: 'GET',
 			mode: 'no-cors',
 			headers: {
-			  'Access-Control-Allow-Origin': '*',
-			  'Content-Type': 'application/json',
-			});
+				'Access-Control-Allow-Origin': '*',
+				'Content-Type': 'application/json',
+			},
+		});
 		data = res.data;
 	} catch (err) {
 		error = err;
