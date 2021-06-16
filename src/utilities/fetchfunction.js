@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = 'KMQOVqRgfYZd7EkMk5e2xVcabmETmQvd';
+const API = process.env.REACT_APP_WEATHER_API;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 const fetchUrls = async (queryKey, cityKey) => {
 	let error;
