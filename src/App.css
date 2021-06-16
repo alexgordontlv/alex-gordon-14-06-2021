@@ -3,9 +3,14 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 .app {
-	width: 100vw;
+	width: 100%;
 	height: 100vh;
+}
+.app_light {
 	background: linear-gradient(to bottom, #3987c9 0%, #e1e5ed 100%);
+}
+.app_dark {
+	background: linear-gradient(to bottom, #171c21 0%, #000000 100%);
 }
 .app_body {
 	display: flex;

@@ -1,6 +1,6 @@
 import React from 'react';
 import './weathercartd.styles.css';
-const WeatherCard = ({ cityWeather, width, iconWidth, forecast }) => {
+const WeatherCard = ({ cityWeather, width, iconWidth, forecast, cityName }) => {
 	const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 	const getImage = (imgNumber) => {
 		return `https://developer.accuweather.com/sites/default/files/${imgNumber < 10 ? `0${imgNumber}` : imgNumber}-s.png`;
@@ -22,6 +22,7 @@ const WeatherCard = ({ cityWeather, width, iconWidth, forecast }) => {
 
 	return (
 		<div className='weather_card_body' style={{ width: width + 'px' }}>
+			{cityName && <h2>{cityName}</h2>}
 			<p>{weather.headline}</p>
 			<div className='icon'>
 				<img loading='lazy' alt='weather' src={weather.img} width={iconWidth} heigth={iconWidth} />
