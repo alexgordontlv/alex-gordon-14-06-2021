@@ -1,17 +1,27 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
 body {
 	margin: 0;
 	font-family: 'Roboto', sans-serif;
+	width: 100%;
+	height: 100%;
 }
-
 .app {
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: 100%;
 	position: absolute;
 }
 .app_light {
+	width: 100%;
+	height: 100%;
 	background: linear-gradient(to bottom, #3987c9 0%, #e1e5ed 100%);
 }
 .app_dark {
+	width: 100%;
+	height: 100%;
 	background: linear-gradient(to bottom, #171c21 0%, #000000 100%);
 }
 .app_body {
